@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TC 505 Application Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif; /* Use Playfair Display font */
+            margin: 20px;
+            background-color: #ADD8E6; /* Light blue background */
+            color: black; /* Black text */
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            background-color: white; /* Optional: white form background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="text"]::placeholder {
+            color: red;  
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: red;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+        }
+        .highlight {
+            color: red; /* Red color for the name */
+        }
+        .gender {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>ITC 505 Application Form</h1> <!-- Updated title -->
+    <form id="applicationForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Sanjana Aitham" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+
+        <label for="course">Course:</label>
+        <select id="course" name="course" required>
+            <option value="">Select a course...</option>
+            <option value="Web Development">Web Development</option>
+         
+
+        <label>Gender:</label>
+        <div class="gender">
+            <label>
+                <input type="radio" name="gender" value="Male" required> Male
+            </label>
+            <label>
+                <input type="radio" name="gender" value="Female" required> Female
+            </label>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("applicationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            const fullName = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const address = document.getElementById("address").value;
+            const course = document.getElementById("course").value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+
+            document.getElementById("result").innerHTML = `
+                <h2>Submitted Information</h2>
+                <p><strong>Full Name:</strong> <span class="highlight">${fullName}</span></p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone Number:</strong> ${phone}</p>
+                <p><strong>Address:</strong> ${address}</p>
+                <p><strong>Course:</strong> ${course}</p>
+                <p><strong>Gender:</strong> ${gender}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
